@@ -25,6 +25,7 @@ use App\Http\Controllers\Api\LikeController;
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 Route::get('logout', [AuthController::class, 'logout']);
+Route::post('save', [AuthController::class, 'userInfo'])->middleware('jwtAuth');
 
 //Post route in CRUD sequence
 Route::post('posts/create', [PostController::class, 'create'])->middleware('jwtAuth');
