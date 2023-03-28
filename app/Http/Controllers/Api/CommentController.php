@@ -19,6 +19,7 @@ class CommentController extends Controller {
         $comment->comment = $request->comment;
 
         $comment->save();
+        $comment->user;
 
         return response()->json([
             'success' => true,
@@ -48,7 +49,7 @@ class CommentController extends Controller {
     public function delete(Request $request) {
         $comment=Comment::find($request->id);
 
-        if($comment->id != Auth::user()->id) {
+        if($comment->user_id != Auth::user()->id) {
             return response()->json([
                 'success' => false,
                 'message' => 'unauthorized access'

@@ -28,10 +28,11 @@ Route::get('logout', [AuthController::class, 'logout']);
 Route::post('save', [AuthController::class, 'userInfo'])->middleware('jwtAuth');
 
 //Post route in CRUD sequence
-Route::post('posts/create', [PostController::class, 'create'])->middleware('jwtAuth');
 Route::get('posts', [PostController::class, 'posts'])->middleware('jwtAuth');
+Route::post('posts/create', [PostController::class, 'create'])->middleware('jwtAuth');
 Route::post('posts/update', [PostController::class, 'update'])->middleware('jwtAuth');
 Route::post('posts/delete', [PostController::class, 'delete'])->middleware('jwtAuth');
+Route::get('posts/my', [PostController::class, 'myPosts'])->middleware('jwtAuth');
 
 //Comment route in CRUD sequence
 Route::post('comments/create', [CommentController::class, 'create'])->middleware('jwtAuth');
